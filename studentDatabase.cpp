@@ -1,43 +1,57 @@
 #include "StudentDatabase.h"
 #include <fstream>
+#include<string>
 
 
 StudentDatabase::StudentDatabase()
 {
 
 }
-void StudentDatabase::newStudentInformation(string firstName,string lastName,string studNo,string bloodGroup,string address,string contactNo){
-    studentFirstName = firstName;
-    studentLastName = lastName;
-    studentNumber = studNo;
-    studentBlooadGRoup = bloodGroup;
-    studentAddress = address;
-    studentContactNo = contactNo;
+void StudentDatabase::newStudentInformation(){
+
+    system("cls");
+    cout<<endl<<endl;
+    cout<<"\t\t\tStudent's Information"<<endl<<endl;
+
+    cout<<"\t\t\t enter first name     :";
+    getline(cin,studentFirstName);
+
+    cout<<"\t\t\t enter last name      :";
+    getline(cin,studentLastName);
+
+
+    cout<<"\t\t\t enter student id     :";
+    cin>>studentNumber;
+    cin.ignore();
+
+    cout<<"\t\t\t enter blood group    :";
+    getline(cin,studentBlooadGRoup);
+
+    cout<<"\t\t\t enter address        :";
+    getline(cin,studentAddress);
+
+    cout<<"\t\t\t enter contact no     :";
+    getline(cin,studentContactNo);
+}
+void StudentDatabase::getStudentList(){
+
+    cout<<"\t\t"<<studentFirstName<<" "<<studentLastName<<"    \t\t"<<studentNumber<<endl;
+}
+void StudentDatabase::getStudentInformation(){
+    if(studentFirstName.length()<5){
+        cout<<studentFirstName<<"       \t"<<studentLastName<<"    \t"<<studentNumber<<"\t\t"<<studentBlooadGRoup<<"\t\t"<<studentAddress<<"   \t\t"<<studentContactNo<<endl;
+    }
+    else
+        cout<<studentFirstName<<"   \t"<<studentLastName<<"    \t"<<studentNumber<<"\t\t"<<studentBlooadGRoup<<"\t\t"<<studentAddress<<"   \t\t"<<studentContactNo<<endl;
+}
+void StudentDatabase::editStudentInformation(){
+
+    string studentID;
+    cout<<"\t\t\t Please enter student ID: ";
+    cin>>studentID;
 }
 
-string StudentDatabase::getStudentFirstName(){
-    string fristName = studentFirstName;
-    return fristName;
-}
-string StudentDatabase::getStudentLastName(){
-    string lastName = studentLastName;
-    return lastName;
-}
-string StudentDatabase::getStudentID(){
-    string studentId = studentNumber;
-    return studentId;
 
+int StudentDatabase::getStudentNumber(){
+    return studentNumber;
 }
-string StudentDatabase::getStudentBlooadGRoup(){
-    string bloodGroup = studentBlooadGRoup;
-    return bloodGroup;
-}
-string StudentDatabase::getStudentAddress(){
-    string address = studentAddress;
-    return address;
-}
-string StudentDatabase::getStudentContactInfo(){
-    string contactInfo = studentContactNo;
-    return contactInfo;
-}
-

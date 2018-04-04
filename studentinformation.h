@@ -12,7 +12,8 @@ public:
     void showStudentsList();
     void showStudentInformation();
     void editStudenetInformation();
-    void deleteStudentInformation();
+    void removeStudentInformation();
+
 };
 
 #endif // STUDENTINFORMATION_H

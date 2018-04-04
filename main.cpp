@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include<ctime>
+#include<conio.h>
 #include "StudentDatabase.h"
 #include "Studentinformation.h"
 
@@ -12,55 +13,69 @@ int logInFail = 0;
 int logInCheck = 0;
 int main(){
 
-    int logInSuccessfull =0;
-    logInSuccessfull=logIn();
+    int logInSuccessfull =1;//make it 0
+    //string studentNumber;
+    //logInSuccessfull=logIn();
     system("cls");
 
     StudentInformation studentInformation;
     
-    int chooseOption;
+    char chooseOption;
     
     if(logInSuccessfull == 1){
         
         do{
-            //cout<<"\t\t\t\t\t Plz Press enter"<<endl;
 
             system("cls");
             cout<<endl<<endl;
             cout<<"\t\t\tStudent's Information"<<endl;
             cout<<endl<<endl;
             cout<<"\t\t\t 1. New Student"<<endl;
-            cout<<"\t\t\t 2. Student's List"<<endl;
-            cout<<"\t\t\t 3. Student's Information"<<endl;
+            cout<<"\t\t\t 2. All Students"<<endl;
+            cout<<"\t\t\t 3. Student Information"<<endl;
             cout<<"\t\t\t 4. Edit Information"<<endl;
             cout<<"\t\t\t 5. Delete Information"<<endl;
             cout<<"\t\t\t 6. Log Out"<<endl;
             cout<<"\t\t\t Choose a option :";
+//            chooseOption = getche();
             cin>>chooseOption;
 
             switch (chooseOption) {
-            case 1:
+            case '1':
+                cin.ignore();
                 studentInformation.addNewStudent();
                 cin.ignore();
                 break;
-            case 2:
+
+            case '2':
+                cin.ignore();
                 studentInformation.showStudentsList();
+                cin.ignore();
                 break;
-            case 3:
+
+            case '3':
+                cin.ignore();
                 studentInformation.showStudentInformation();
                 cin.ignore();
+                break;
+
+            case '4':
+                cin.ignore();
+                studentInformation.editStudenetInformation();
+                cin.ignore();
+
+                break;
+
+            case '5':
+                cin.ignore();
+                studentInformation.removeStudentInformation();
                 cin.ignore();
                 break;
-            case 4:
-                studentInformation.editStudenetInformation();
-                break;
-            case 5:
-                studentInformation.deleteStudentInformation();
-                break;
+
             default:
                 break;
             }
-        }while(chooseOption!=6);
+        }while(chooseOption!='6');
 
     }
     else if(logInSuccessfull == 2){

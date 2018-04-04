@@ -8,22 +8,20 @@ class StudentDatabase
 {
     string studentFirstName;
     string studentLastName;
-    string studentNumber;
+    int studentNumber;
     string studentBlooadGRoup;
     string studentAddress;
     string studentContactNo;
 
 public:
+
     StudentDatabase();
-    void newStudentInformation(string firstName,string lastName,string studNo,string bloodGroup,string address,string contactNo);
+    void newStudentInformation();
+    void getStudentList();
+    void getStudentInformation();
+    void editStudentInformation();
 
-    string getStudentFirstName();
-    string getStudentLastName();
-    string getStudentID();
-    string getStudentBlooadGRoup();
-    string getStudentAddress();
-    string getStudentContactInfo();
-
+    int getStudentNumber();
 };
 
 #endif // STUDENTDATABASE_H
