@@ -99,37 +99,38 @@ void StudentInformation::editStudenetInformation(){
 
     StudentDatabase studentDatabase;
 
-    ifstream showInfo;
-    ofstream saveInfo;
+    fstream editInfo;
 
-    showInfo.open("studentInformation.dat",ios::binary);
-    saveInfo.open("tempInfo.dat",ios::binary | ios::app);
+    editInfo.open("studentInformation.dat",ios::binary | ios::in | ios::out);
 
-    if(!showInfo || !saveInfo){
+    if(!editInfo){
         cout<<"error occured.."<<endl;
         cout<<"Press any key......."<<endl;
         return;
     }
 
-    while (showInfo.read(reinterpret_cast<char *> (&studentDatabase),sizeof(StudentDatabase))) {
+    while (editInfo.read(reinterpret_cast<char *> (&studentDatabase),sizeof(StudentDatabase))) {
 
-        if(studentDatabase.getStudentNumber()!=studentNum){
-
-            saveInfo.write(reinterpret_cast<char *> (&studentDatabase),sizeof(StudentDatabase));
-        }
-        else{
+        if(studentDatabase.getStudentNumber()==studentNum){
 
             cout<<"First Name "<<"\t"<<"Last Name "<<"\t"<<"Student Number "<<"\t"<<"Blood Group "<<"\t"<<"Address  "<<"\t\t"<<"Contact No"<<endl;
             cout<<"-----------"<<"\t"<<"----------"<<"\t"<<"---------------"<<"\t"<<"------------"<<"\t"<<"---------"<<"\t\t"<<"------------"<<endl<<endl;
-
             studentDatabase.getStudentInformation();
 
             cout<<"\t\t\t Enter new Information"<<endl;
             cout<<"\t\t\t-----------------------"<<endl;
-            studentDatabase.newStudentInformation();
-            saveInfo.write(reinterpret_cast<char *> (&studentDatabase),sizeof(StudentDatabase));
+
+            studentDatabase.modifyStudentInformation(studentNum);
+
+            int position = (-1)*static_cast<int>(sizeof(StudentDatabase));
+            editInfo.seekg(position,ios::cur);
+            editInfo.write(reinterpret_cast<char *>(&studentDatabase),sizeof(StudentDatabase));
+
+            cout<<"Information updated"<<endl;
             dataFound = 1;
+
         }
+
     }
 
     if(dataFound == 0){
@@ -137,11 +138,7 @@ void StudentInformation::editStudenetInformation(){
         cout<<"No student with the given student ID."<<endl;
     }
 
-    saveInfo.close();
-    showInfo.close();
-
-    remove("studentInformation.dat");
-    rename("tempInfo.dat","1studentInformation.dat");
+    editInfo.close();
 
 }
 

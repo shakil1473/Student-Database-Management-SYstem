@@ -41,7 +41,26 @@ void StudentDatabase::getStudentInformation(){
     else
         cout<<studentFirstName<<"   \t"<<studentLastName<<"    \t"<<studentNumber<<"\t\t"<<studentBlooadGRoup<<"\t\t"<<studentAddress<<"   \t\t"<<studentContactNo<<endl;
 }
+void StudentDatabase::modifyStudentInformation(int studNumber){
 
+    cout<<"\t\t\t Student Number       :"<<studNumber<<endl;
+
+    cout<<"\t\t\t enter first name     :";
+    getline(cin,studentFirstName);
+
+    cout<<"\t\t\t enter last name      :";
+    getline(cin,studentLastName);
+
+
+    cout<<"\t\t\t enter blood group    :";
+    getline(cin,studentBlooadGRoup);
+
+    cout<<"\t\t\t enter address        :";
+    getline(cin,studentAddress);
+
+    cout<<"\t\t\t enter contact no     :";
+    getline(cin,studentContactNo);
+}
 
 int StudentDatabase::getStudentNumber(){
     return studentNumber;
