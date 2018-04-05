@@ -9,9 +9,6 @@ StudentDatabase::StudentDatabase()
 }
 void StudentDatabase::newStudentInformation(){
 
-    system("cls");
-    cout<<endl<<endl;
-    cout<<"\t\t\tStudent's Information"<<endl<<endl;
 
     cout<<"\t\t\t enter first name     :";
     getline(cin,studentFirstName);
@@ -43,12 +40,6 @@ void StudentDatabase::getStudentInformation(){
     }
     else
         cout<<studentFirstName<<"   \t"<<studentLastName<<"    \t"<<studentNumber<<"\t\t"<<studentBlooadGRoup<<"\t\t"<<studentAddress<<"   \t\t"<<studentContactNo<<endl;
-}
-void StudentDatabase::editStudentInformation(){
-
-    string studentID;
-    cout<<"\t\t\t Please enter student ID: ";
-    cin>>studentID;
 }
 
 

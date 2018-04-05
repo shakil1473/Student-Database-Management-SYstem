@@ -19,7 +19,6 @@ public:
     void newStudentInformation();
     void getStudentList();
     void getStudentInformation();
-    void editStudentInformation();
 
     int getStudentNumber();
 };

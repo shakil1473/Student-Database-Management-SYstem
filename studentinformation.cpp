@@ -15,6 +15,10 @@ StudentInformation::StudentInformation()
 }
 void StudentInformation::addNewStudent(){
 
+    system("cls");
+    cout<<endl<<endl;
+    cout<<"\t\t\tStudent's Information"<<endl<<endl;
+
     StudentDatabase studentDatabase;
     ofstream saveInfo;
     saveInfo.open("studentInformation.dat",ios::binary | ios::app);
@@ -28,7 +32,7 @@ void StudentInformation::addNewStudent(){
     cout<<"Information has been successfully"<<endl;
 }
 
-void StudentInformation::showStudentsList(){
+void StudentInformation::showAllStudents(){
 
     system("cls");
     cout<<endl<<endl;
@@ -81,7 +85,63 @@ void StudentInformation::editStudenetInformation(){
 
     system("cls");
     cout<<endl<<endl;
-    cout<<"\t\t\tStudent's Information"<<endl<<endl;
+    cout<<"\t\t\tStudent's Information"<<endl<<endl<<endl;
+    cout<<"\t\t\t Edit Student Information"<<endl;
+    cout<<"\t\t\t----------------------------"<<endl;
+
+    int studentNum;
+    int dataFound = 0;
+
+    cout<<"Enter Student Number : ";
+    cin>>studentNum;
+    cin.ignore();
+
+
+    StudentDatabase studentDatabase;
+
+    ifstream showInfo;
+    ofstream saveInfo;
+
+    showInfo.open("studentInformation.dat",ios::binary);
+    saveInfo.open("tempInfo.dat",ios::binary | ios::app);
+
+    if(!showInfo || !saveInfo){
+        cout<<"error occured.."<<endl;
+        cout<<"Press any key......."<<endl;
+        return;
+    }
+
+    while (showInfo.read(reinterpret_cast<char *> (&studentDatabase),sizeof(StudentDatabase))) {
+
+        if(studentDatabase.getStudentNumber()!=studentNum){
+
+            saveInfo.write(reinterpret_cast<char *> (&studentDatabase),sizeof(StudentDatabase));
+        }
+        else{
+
+            cout<<"First Name "<<"\t"<<"Last Name "<<"\t"<<"Student Number "<<"\t"<<"Blood Group "<<"\t"<<"Address  "<<"\t\t"<<"Contact No"<<endl;
+            cout<<"-----------"<<"\t"<<"----------"<<"\t"<<"---------------"<<"\t"<<"------------"<<"\t"<<"---------"<<"\t\t"<<"------------"<<endl<<endl;
+
+            studentDatabase.getStudentInformation();
+
+            cout<<"\t\t\t Enter new Information"<<endl;
+            cout<<"\t\t\t-----------------------"<<endl;
+            studentDatabase.newStudentInformation();
+            saveInfo.write(reinterpret_cast<char *> (&studentDatabase),sizeof(StudentDatabase));
+            dataFound = 1;
+        }
+    }
+
+    if(dataFound == 0){
+
+        cout<<"No student with the given student ID."<<endl;
+    }
+
+    saveInfo.close();
+    showInfo.close();
+
+    remove("studentInformation.dat");
+    rename("tempInfo.dat","1studentInformation.dat");
 
 }
 
@@ -91,8 +151,11 @@ void StudentInformation::removeStudentInformation(){
     cout<<"\t\t\tStudent's Information"<<endl<<endl<<endl;
     cout<<"\t\t\t Remove Student Information"<<endl;
     cout<<"\t\t\t----------------------------"<<endl;
+
     int studentNum;
-    cout<<"Enter Student Number : "<<endl;
+    int dataFound = 0;
+
+    cout<<"Enter Student Number : ";
     cin>>studentNum;
     cin.ignore();
 
@@ -115,6 +178,13 @@ void StudentInformation::removeStudentInformation(){
         if(studentDatabase.getStudentNumber()!=studentNum){
             saveInfo.write(reinterpret_cast<char *> (&studentDatabase),sizeof(StudentDatabase));
         }
+        else {
+            dataFound = 1;
+        }
+    }
+
+    if(dataFound ==0){
+        cout<<"no student with the given student ID"<<endl;
     }
     saveInfo.close();
     showInfo.close();

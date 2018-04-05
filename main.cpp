@@ -49,7 +49,7 @@ int main(){
 
             case '2':
                 cin.ignore();
-                studentInformation.showStudentsList();
+                studentInformation.showAllStudents();
                 cin.ignore();
                 break;
 
@@ -61,6 +61,7 @@ int main(){
 
             case '4':
                 cin.ignore();
+                cout<<chooseOption;
                 studentInformation.editStudenetInformation();
                 cin.ignore();
 

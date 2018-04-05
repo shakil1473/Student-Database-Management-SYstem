@@ -9,7 +9,7 @@ class StudentInformation
 public:
     StudentInformation();
     void addNewStudent();
-    void showStudentsList();
+    void showAllStudents();
     void showStudentInformation();
     void editStudenetInformation();
     void removeStudentInformation();
