@@ -162,7 +162,7 @@ void StudentInformation::removeStudentInformation(){
       cout<<"\t\t\t----------------------------"<<endl;
 
       int studentNum;
-      int dataFound = 0;
+
 
       cout<<"Enter Student Number : ";
       cin>>studentNum;
@@ -195,13 +195,15 @@ void StudentInformation::removeStudentInformation(){
       if(dataFound ==0){
           cout<<"no student with the given student ID"<<endl;
       }
+      else if(dataFound ==1)
+          cout<<"Data has been deleted"<<endl;
+
       saveInfo.close();
       showInfo.close();
 
       remove("studentInformation.dat");
       rename("tempInfo.dat","studentInformation.dat");
 
-      cin.ignore();
-      cout<<"cant's return"<<endl;
+      dataFound = 0;
 
 }

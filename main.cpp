@@ -13,9 +13,9 @@ int logInFail = 0;
 int logInCheck = 0;
 int main(){
 
-    int logInSuccessfull =1;
+    int logInSuccessfull =0;
 
-    //logInSuccessfull=logIn();
+    logInSuccessfull=logIn();
     system("cls");
 
     StudentInformation studentInformation;
