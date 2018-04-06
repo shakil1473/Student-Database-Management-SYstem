@@ -13,9 +13,9 @@ int logInFail = 0;
 int logInCheck = 0;
 int main(){
 
-    int logInSuccessfull =1;//make it 0
-    //string studentNumber;
-    //logInSuccessfull=logIn();
+    int logInSuccessfull =0;
+
+    logInSuccessfull=logIn();
     system("cls");
 
     StudentInformation studentInformation;
@@ -37,7 +37,7 @@ int main(){
             cout<<"\t\t\t 5. Delete Information"<<endl;
             cout<<"\t\t\t 6. Log Out"<<endl;
             cout<<"\t\t\t Choose a option :";
-//            chooseOption = getche();
+
             cin>>chooseOption;
 
             switch (chooseOption) {
@@ -61,7 +61,6 @@ int main(){
 
             case '4':
                 cin.ignore();
-                cout<<chooseOption;
                 studentInformation.editStudenetInformation();
                 cin.ignore();
 

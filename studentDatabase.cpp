@@ -32,7 +32,14 @@ void StudentDatabase::newStudentInformation(){
 }
 void StudentDatabase::getStudentList(){
 
-    cout<<"\t\t"<<studentFirstName<<" "<<studentLastName<<"    \t\t"<<studentNumber<<endl;
+
+    if(studentFirstName.length()<=5)
+        cout<<"\t\t"<<studentFirstName<<" "<<studentLastName<<"        "<<"    \t\t"<<studentNumber<<endl;
+    else
+        cout<<"\t\t"<<studentFirstName<<" "<<studentLastName<<"    \t\t"<<studentNumber<<endl;
+
+
+
 }
 void StudentDatabase::getStudentInformation(){
     if(studentFirstName.length()<5){

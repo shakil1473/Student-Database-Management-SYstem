@@ -20,6 +20,7 @@ public:
     void getStudentList();
     void getStudentInformation();
     void modifyStudentInformation(int studNumber);
+
     int getStudentNumber();
 };
 

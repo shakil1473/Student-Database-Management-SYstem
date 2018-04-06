@@ -2,11 +2,15 @@
 #define STUDENTINFORMATION_H
 #include<iostream>
 #include<string>
+#include "studentDatabase.h"
+
 using namespace std;
 
 class StudentInformation
 {
 public:
+    int position = (-1)*static_cast<int>(sizeof(StudentDatabase));
+    int dataFound = 0;
     StudentInformation();
     void addNewStudent();
     void showAllStudents();
