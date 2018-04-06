@@ -183,14 +183,14 @@ void StudentInformation::removeStudentInformation(){
           return;
       }
 
-//      while (showInfo.read(reinterpret_cast<char *> (&studentDatabase),sizeof(StudentDatabase))) {
-//          if(studentDatabase.getStudentNumber()!=studentNum){
-//              saveInfo.write(reinterpret_cast<char *> (&studentDatabase),sizeof(StudentDatabase));
-//          }
-//          else {
-//              //dataFound = 1;
-//          }
-//      }
+      while (showInfo.read(reinterpret_cast<char *> (&studentDatabase),sizeof(StudentDatabase))) {
+          if(studentDatabase.getStudentNumber()!=studentNum){
+              saveInfo.write(reinterpret_cast<char *> (&studentDatabase),sizeof(StudentDatabase));
+          }
+          else {
+              dataFound = 1;
+          }
+      }
 
       if(dataFound ==0){
           cout<<"no student with the given student ID"<<endl;
@@ -200,5 +200,8 @@ void StudentInformation::removeStudentInformation(){
 
       remove("studentInformation.dat");
       rename("tempInfo.dat","studentInformation.dat");
+
+      cin.ignore();
+      cout<<"cant's return"<<endl;
 
 }

@@ -13,9 +13,9 @@ int logInFail = 0;
 int logInCheck = 0;
 int main(){
 
-    int logInSuccessfull =0;
+    int logInSuccessfull =1;
 
-    logInSuccessfull=logIn();
+    //logInSuccessfull=logIn();
     system("cls");
 
     StudentInformation studentInformation;
@@ -69,6 +69,7 @@ int main(){
             case '5':
                 cin.ignore();
                 studentInformation.removeStudentInformation();
+                cout<<"working";
                 cin.ignore();
                 break;
 
